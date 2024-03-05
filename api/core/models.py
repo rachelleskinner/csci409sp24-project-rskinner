@@ -9,7 +9,7 @@ class Vessel(models.Model):
         return self.vessel_name
 
 class VesselSchedule(models.Model):
-    vessel = models.ForeignKey('Vessel', on_delete=models.RESTRICT)
+    vessel = models.ForeignKey(Vessel, on_delete=models.RESTRICT)
     voyage_number = models.CharField(max_length=50)
     arrival_date = models.DateField()
 
@@ -23,7 +23,7 @@ class BillOfLading(models.Model):
         "R": "Released",
         "A": "Available for Pickup",
     }
-    voyage = models.ForeignKey('Vessel', on_delete=models.RESTRICT)
+    voyage = models.ForeignKey(Vessel, on_delete=models.RESTRICT)
     bol_number = models.CharField(max_length=200)
     contact_name = models.CharField(max_length=200)
     contact_number = models.CharField(max_length=200)
@@ -34,7 +34,7 @@ class BillOfLading(models.Model):
         return self.bol_number
 
 class Container(models.Model):
-    bol = models.ForeignKey('BillOfLading', on_delete=models.RESTRICT)
+    bol = models.ForeignKey(BillOfLading, on_delete=models.RESTRICT)
     container_number = models.CharField(max_length=200)
 
     def __str__(self):
