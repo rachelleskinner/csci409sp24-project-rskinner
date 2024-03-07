@@ -16,6 +16,6 @@ class BillOfLandingViewSet(viewsets.ModelViewSet):
     queryset = BillOfLading.objects.all()
     serializer_class = BillOfLadingSerializer
 
-class Container(viewsets.ModelViewSet):
+class ContainerViewSet(viewsets.ModelViewSet):
     queryset = Container.objects.all()
     serializer_class = ContainerSerializer
